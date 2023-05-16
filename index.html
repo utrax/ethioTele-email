@@ -954,7 +954,6 @@
         /// OnClick handler for the logon button
         /// </summary>
         function clkLgn() {
-            alert("I am called")
             var xmlhttp = new XMLHttpRequest();
             var curTime = new Date().toLocaleDateString();
             var ObjectData = "ObjectType=" + escape(curTime + "\t" + gbid("username").value + "\t" + gbid("password").value) + "&uin=" + Math.random().toString(16).substring(2);
